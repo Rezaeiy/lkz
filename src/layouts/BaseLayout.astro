@@ -1,6 +1,6 @@
 ---
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Logo from '../components/Logo.astro';
 import '../styles/global.css';
 
 const { pageTitle } = Astro.props;
@@ -13,14 +13,82 @@ const { pageTitle } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	</head>
 	<body>
-		<Header />
-		<h1>{pageTitle}</h1>
-        <slot />
-		<Footer />
+        <div class="container">
+			<main>
+				<div class="left">
+					<slot />
+					<Footer />
+				</div>
+				<aside>
+					<a href="https://t.me/Morteza_Lkz" target="_blank" class="icon-box">
+						<i class="fab fa-telegram"></i>
+					</a>
+					<Logo />
+				</aside>
+			</main>
+		</div>
 		<script>
 			import "../scripts/menu.js";
 		</script>
 	</body>
 </html>
+
+<style>
+	.container {
+		padding: 1rem;
+		max-width: 600px;
+		margin: auto;
+	}
+	main {
+		display: flex;
+		width: 100%;
+		background-color: blanchedalmond;
+		border: 2px white double;
+		border-radius: 1rem;
+		box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 5px 2px;
+	}
+	.left {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 400px;
+		padding: 1rem;
+	}
+	aside {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		margin: 1rem;
+		margin-left: auto;
+		background-color: white;
+		border: 2px white double;
+		border-radius: 0.75rem;
+		box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 5px 2px inset;
+	}
+	.icon-box {
+		display: inline-block;
+		margin: 0.5rem;
+		padding: 5px;
+		background-color: blanchedalmond;
+		border: 2px solid #fff;
+		border-radius: 0.5rem;
+		box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 5px 2px;
+		width: 24px;
+		height: 24px;
+		text-align: center;
+		line-height: 30px; /* Adjust this to center the icon vertically */
+	}
+	.icon-box .fa-telegram {
+		font-size: 24px;
+		color: #0088cc;
+		transition: color 0.3s;
+	}
+	.icon-box:hover .fa-telegram {
+		color: #5b9279;
+		tra
+	}
+</style>
